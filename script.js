@@ -20,9 +20,15 @@ let disks = [{
     },
 ]
 
+
 let topDisk;
 let towerMode = 'source';
+const out = document.getElementById('out')
+out.textContent = out.textContent = 'Select a tower to move from';
+
+
 const towers = document.querySelectorAll('.tower');
+
 for (let item of towers) {
     item.addEventListener('click', handleClick);
 }
@@ -34,6 +40,8 @@ function handleClick(event) {
     console.log("tower is ", tower);
 
     if (towerMode === 'source') {
+        out.textContent = 'Select a tower to move  a disk onto';
+        
         if (tower.lastElementChild) {
             console.log("lec", tower.lastElementChild);
             topDisk = tower.lastElementChild;
@@ -42,6 +50,8 @@ function handleClick(event) {
             alert('invalid selection');
         }
     } else if (towerMode === 'destination') {
+        out.textContent = out.textContent = 'Select a tower to move from';
+        
         let targetChild = tower.lastElementChild
         if (isValidPlacement(topDisk, targetChild)) {
             console.log("First/taget", topDisk + ' ' + targetChild)
